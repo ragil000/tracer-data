@@ -1,0 +1,1 @@
+<script src="<?=base_url('assets/admin-assets/')?>assets/js/back/students/master/list/master.js"></script>
