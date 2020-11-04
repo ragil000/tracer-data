@@ -50,21 +50,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'welcome';
-$route['404_override'] = '';
+$route['404_override'] = 'ErrorPage/page404';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['admin/login'] = 'back/auth/Login/index';
-$route['admin/login/auth'] = 'back/auth/Login/auth';
-$route['admin/logout'] = 'back/auth/Login/logout';
+$route['register'] = 'back/auth/Login/register';
+$route['register/create'] = 'back/auth/Login/create';
 
-$route['admin'] = 'back/Admin/index';
+$route['login'] = 'back/auth/Login/index';
+$route['login/auth'] = 'back/auth/Login/auth';
+$route['logout'] = 'back/auth/Login/logout';
 
-$route['admin/student'] = 'back/students/Student/index';
-$route['admin/student/create'] = 'back/students/Student/create';
-$route['admin/student/read/(:num)'] = 'back/students/Student/read/$1';
-$route['admin/student/update'] = 'back/students/Student/update';
-$route['admin/student/delete'] = 'back/students/Student/delete';
-$route['admin/student/(:any)'] = 'back/students/Student/index/$1';
+$route['dashboard'] = 'back/Dashboard/index';
+
+// $route['importExcel'] = 'Welcome/importExcel';
+
+$route['back/student'] = 'back/students/Student/index';
+$route['back/student/create'] = 'back/students/Student/create';
+$route['back/student/read/(:num)'] = 'back/students/Student/read/$1';
+$route['back/student/update'] = 'back/students/Student/update';
+$route['back/student/updateProfile'] = 'back/students/Student/updateProfile';
+$route['back/student/updateParent'] = 'back/students/Student/updateParent';
+$route['back/student/updateStudy'] = 'back/students/Student/updateStudy';
+$route['back/student/updateArchievement'] = 'back/students/Student/updateArchievement';
+$route['back/student/updateJob'] = 'back/students/Student/updateJob';
+$route['back/student/delete'] = 'back/students/Student/delete';
+$route['back/student/(:any)'] = 'back/students/Student/index/$1';
 
 $route['admin/form'] = 'back/forms/Form/index';
 $route['admin/form/(:any)'] = 'back/forms/Form/index/$1';
@@ -73,4 +83,4 @@ $route['admin/email'] = 'back/emails/Email/index';
 $route['admin/email/send'] = 'back/emails/Email/send';
 $route['admin/email/(:any)'] = 'back/emails/Email/index/$1';
 
-$route['midle/form'] = 'midle/forms/Form/index';
+$route['middle/form'] = 'middle/forms/Form/index';

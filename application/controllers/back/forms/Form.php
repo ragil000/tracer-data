@@ -24,7 +24,7 @@ class Form extends CI_Controller {
             $data['script']         = $getContent['script'];
             $data['pageUrl']        = $getContent['pageUrl'];
         }else if($content == 'form-dashboard') {
-            $content                    = 'dashboard/form-dashboard';
+            $content              = 'dashboard/form-dashboard';
             $data['theme_style']  = $this->path.'dashboard/css/dashboard/theme_style';
             $data['theme_script'] = $this->path.'dashboard/js/dashboard/theme_script';
             $data['script']       = $this->path.'dashboard/js/dashboard/script';

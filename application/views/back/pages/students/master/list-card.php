@@ -23,8 +23,8 @@
 						</ul>
                     </div>
                     <div class="row">
-                        <div class="col-12">
-                            <div class="collapse text-center" id="search-nav">
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <div class="collapse text-center pr-0 mr-0" id="search-nav">
                                 <form class="navbar-center navbar-form nav-search mr-md-3">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -32,56 +32,68 @@
                                                 <i class="fa fa-search search-icon"></i>
                                             </button>
                                         </div>
-                                        <input type="text" placeholder="Search ..." class="form-control" onchange="btnAlpha(this)">
+                                        <input type="text" id="any" onkeyup="filter(this)" placeholder="Cari mahasiswa..." class="form-control disable-enter">
                                     </div>
                                 </form>
                             </div>
                         </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 text-sm-center text-xs-center">
+                            <a href="<?=base_url().$base_path_url.'tambah-mahasiswa'?>" style="text-decoration: none;">
+                                <button class="btn btn-primary mr-lg-4">
+                                    <span class="btn-label">
+                                        <i class="fa fa-plus"></i>
+                                    </span>
+                                    Tambah Mahasiswa
+                                </button>
+                            </a>
+                        </div>
+                        <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12 text-lg-right text-sm-center text-xs-center">
+                            <!-- <a href="<?=base_url().$page_url.'?display=table'?>" style="text-decoration:none;">
+                                <button type="button" id="display-table" class="btn btn-icon btn-light btn-display">
+                                    <i class="icon-list"></i>
+                                </button>
+                            </a> -->
+                            <a href="<?=base_url().$page_url.'?display=card'?>" style="text-decoration:none;">
+                                <button type="button" id="display-card" class="btn btn-icon btn-primary btn-display">
+                                    <i class="icon-grid"></i>
+                                </button>
+                            </a>
+                        </div>
+                        <div class="col-12 pt-3">
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <div class="form-group form-group-default">
+                                        <select class="form-control select2-init" onchange="filter(this)" id="major_id" name="major_id">
+                                            <?=$major_opt?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="form-group form-group-default">
+                                        <select class="form-control select2-init" onchange="filter(this)" id="status" name="status">
+                                            <?=$status_opt?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="form-group form-group-default">
+                                        <select class="form-control select2-init" onchange="filter(this)" id="date_of_entry" name="date_of_entry">
+                                            <?=$date_of_entry_opt?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="form-group form-group-default">
+                                        <select class="form-control select2-init" onchange="filter(this)" id="date_of_graduate" name="date_of_graduate">
+                                            <?=$date_of_graduate_opt?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div id="list-data" class="row card-gap multi-column justify-content-center">
-                        <?php
-                            // for($i=0; $i < 10; $i++){
-                        ?>
-                        <!-- <div class="card col-lg-2 col-md-4 col-sm-6">
-                            <div class="row mt-2">
-                                <div class="col-12">
-                                    <div class="card-header-btn mt-2 mb-2 p-2">
-                                        <span class="badge badge-danger m-0 btn-left-card text-vsm">2015</span>
-                                        <span class="badge badge-success m-0 mt-4 btn-left-card text-vsm">Lulus</span>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="card-header-btn mb-2 p-2 dropleft">
-                                        <a href="#" class="m-0 btn-right-card disable-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="la flaticon-mark-1"></i></a>
-                                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-                                            <a class="dropdown-item text-vsm" href="#">Action</a>
-                                            <a class="dropdown-item text-vsm" href="#">Another action</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item text-vsm" href="#">Something else here</a>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="avatar avatar-lg center-img">
-                                <a href="#" class="disable-link"><img src="<?=base_url('assets/img/students/avatars/')?>student.png" alt="foto-profil.jpg" class="avatar-img rounded"></a>
-                            </div>
-                            <div class="card-body p-0 pt-2 pb-2">
-                                <a href="#" class="disable-link">
-                                    <p class="text-small text-center text-dark pb-0 mb-0">Ragil Manggalaning Y</p>
-                                    <p class="text-small text-center text-dark pb-0 mb-0"><span class="text-msm">E1E115042</span> | <span class="text-msm">08 Jun 1997</span></p>
-                                    <p class="text-small text-center text-success pt-0 pb-0 mt-0 mb-0">ragilmanggalaning42@gmail.com</p>
-                                    <p class="text-small text-center text-info pt-0 pb-0 mt-0 mb-0">+62 823 1146 3010</p>
-                                </a>
-                            </div>
-                            <div class="progress-card m-0 p-0 pb-2">
-                                <div class="progress" style="height: 6px;">
-                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="" data-original-title="80% data diri terisi"></div>
-                                </div>
-                            </div>
-                        </div> -->
-                        <?php
-                            // }
-                        ?>
+                        <!-- data from js ajax -->
                     </div>
                 </div>
             </div>

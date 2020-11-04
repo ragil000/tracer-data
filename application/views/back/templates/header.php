@@ -247,17 +247,17 @@
 						<li class="nav-item dropdown hidden-caret">
 							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
 								<div class="avatar-sm">
-									<img src="<?=base_url('assets/admin-assets/')?>assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
+									<img src="<?=base_url('assets/admin-assets/')?>assets/<?=$data_account->photo_profile ? $data_account->photo_profile : 'img/profile.jpg'?>" alt="..." class="avatar-img rounded-circle">
 								</div>
 							</a>
 							<ul class="dropdown-menu dropdown-user animated fadeIn">
 								<div class="dropdown-user-scroll scrollbar-outer">
 									<li>
 										<div class="user-box">
-											<div class="avatar-lg"><img src="<?=base_url('assets/admin-assets/')?>assets/img/profile.jpg" alt="image profile" class="avatar-img rounded"></div>
+											<div class="avatar-lg"><img src="<?=base_url('assets/admin-assets/')?>assets/<?=$data_account->photo_profile ? $data_account->photo_profile : 'img/profile.jpg'?>" alt="image profile" class="avatar-img rounded"></div>
 											<div class="u-text">
-												<h4>Hizrian</h4>
-												<p class="text-muted">hello@example.com</p><a href="#" onclick="btnAlpha(this)" class="btn btn-xs btn-secondary btn-sm">Lihat Profil</a>
+												<h4><?php if($data_account->full_name) echo limitText($data_account->full_name, 22); else if($data_account->username) echo limitText($data_account->username, 22); else echo limitText($data_account->email, 22); ?></h4>
+												<p class="text-muted"><?=limitText($data_account->email, 22)?></p><a href="<?=base_url('back/student/profil-mahasiswa')?>" class="btn btn-xs btn-secondary btn-sm">Lihat Profil</a>
 											</div>
 										</div>
 									</li>
@@ -268,7 +268,7 @@
 										<div class="dropdown-divider"></div>
 										<a class="dropdown-item" href="#" onclick="btnAlpha(this)">Pengaturan Akun</a>
 										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="<?=base_url('admin/logout')?>">Keluar</a>
+										<a class="dropdown-item" href="<?=base_url('logout')?>">Keluar</a>
 									</li>
 								</div>
 							</ul>
@@ -285,13 +285,13 @@
 				<div class="sidebar-content">
 					<div class="user">
 						<div class="avatar-sm float-left mr-2">
-							<img src="<?=base_url('assets/admin-assets/')?>assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
+							<img src="<?=base_url('assets/admin-assets/')?>assets/<?=$data_account->photo_profile ? $data_account->photo_profile : 'img/profile.jpg'?>" alt="..." class="avatar-img rounded-circle">
 						</div>
 						<div class="info">
 							<a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
 								<span>
-									Hizrian
-									<span class="user-level">Administrator</span>
+									<?php if($data_account->full_name) echo limitText($data_account->full_name, 22); else if($data_account->username) echo limitText($data_account->username, 22); else echo limitText($data_account->email, 22); ?>
+									<span class="user-level"><?=$data_account->role?></span>
 									<span class="caret"></span>
 								</span>
 							</a>
@@ -320,7 +320,7 @@
 					</div>
 					<ul class="nav nav-primary">
 						<li class="nav-item active" id="dasbor">
-							<a href="<?=base_url('admin/')?>">
+							<a href="<?=base_url('dashboard')?>">
 								<i class="fas fa-desktop"></i>
 								<p>Dasbor</p>
 							</a>
@@ -331,6 +331,12 @@
 							</span>
 							<h4 class="text-section">Master</h4>
 						</li>
+						<li class="nav-item" id="mahasiswax">
+							<a href="<?=base_url('back/student/daftar-mahasiswa')?>">
+								<i class="flaticon-add-user"></i>
+								<p>Mahasiswa</p>
+							</a>
+						</li>
 						<li id="parent-mahasiswa" class="nav-item">
 							<a data-toggle="collapse" href="#mahasiswa">
 								<i class="flaticon-add-user"></i>
@@ -340,8 +346,13 @@
 							<div class="collapse" id="mahasiswa">
 								<ul class="nav nav-collapse">
 									<li id="child-mahasiswa-1" class="child-nav-item">
-										<a href="<?=base_url('admin/student/daftar-mahasiswa')?>">
+										<a href="<?=base_url('back/student/daftar-mahasiswa')?>">
 											<span class="sub-item">Data Mahasiswa</span>
+										</a>
+									</li>
+									<li id="child-mahasiswa-2" class="child-nav-item">
+										<a href="<?=base_url('back/student/ubah-status-mahasiswa')?>">
+											<span class="sub-item">Ubah Status</span>
 										</a>
 									</li>
 									<li class="child-nav-item">

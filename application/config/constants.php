@@ -13,6 +13,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 defined('SHOW_DEBUG_BACKTRACE') OR define('SHOW_DEBUG_BACKTRACE', TRUE);
 
+defined('STUDENT')  OR define('STUDENT', 'student');
+defined('TEACHER')  OR define('TEACHER', 'teacher');
+defined('ADMIN')  OR define('ADMIN', 'student'); // nanti ganti jadi admin
+defined('SUPER_ADMIN')  OR define('SUPER_ADMIN', 'super_admin');
+
 /*
 |--------------------------------------------------------------------------
 | File and Directory Modes

@@ -1,3 +1,26 @@
+/* select2 */
+.select2-container {
+    width:100% !important;
+    border:0px !important;
+    outline:0px !important;
+}
+
+.select2-selection {
+    width:100% !important;
+    border:0px !important;
+    outline:0px !important;
+}
+
+.select2-dropdown {
+    outline: rgba(0,0,0,.07) solid 1px !important;
+    border: 0px !important;
+}
+
+/* custom */
+.text-xsmall {
+    font-size: .8em !important;
+}
+
 /* sweet alert center text */
 .swal-modal .swal-text {
     text-align: center !important;

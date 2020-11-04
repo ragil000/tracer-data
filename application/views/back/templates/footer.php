@@ -48,6 +48,7 @@
     <!-- custom javascript -->
     <script>
         const BASE_URL  = '<?=base_url()?>'
+        const ACCOUNT_DATA  = JSON.parse('<?=json_encode($data_account)?>')
     </script>
 
     <script src="<?=base_url('assets/admin-assets/')?>assets/js/back/global/global-setting.js"></script>

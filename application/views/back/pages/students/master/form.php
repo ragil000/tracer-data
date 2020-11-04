@@ -28,72 +28,56 @@
 							</li>
 						</ul>
 					</div>
-					<div class="row">
+					<div class="row justify-content-center">
 						<div class="col-md-12">
 							<div class="card">
 								<div class="card-header">
 									<div class="card-title">Formulir isian data mahasiswa</div>
 								</div>
 								<div class="card-body">
-									<form class="form" action="<?=base_url('admin/student/create')?>" method="POST">
+									<form class="form" action="<?=base_url().$base_path_url.'create'?>" method="POST">
+										<?=!empty($edit_detail) ? '<input type="text" name="user_id" value="'.$edit_detail->user_id.'" hidden> <input type="text" name="profile_id" value="'.$edit_detail->profile_id.'" hidden>' : ''?>
 										<div class="row">
+											<div class="col-lg-12">
+												<div class="form-group form-group-default">
+													<label>Jurusan</label>
+													<select class="form-control required" id="major_id" name="major_id">
+														<?=$major_opt?>
+													</select>
+												</div>
+											</div>
 											<div class="col-lg-6">
 												<div class="form-group">
 													<!-- <label for="successInput">Success Input</label> -->
 													<div id="sandbox-container" class="span5">
-														<input type="text" id="full-name" name="full_name" placeholder="Nama lengkap" value="" class="form-control">
+														<input type="text" id="nim" name="nim" placeholder="NIM" value="<?=!empty($edit_detail) ? $edit_detail->nim : ''?>" class="form-control required">
 													</div>
 												</div>
 											</div>
 											<div class="col-lg-6">
 												<div class="form-group">
 													<!-- <label for="successInput">Success Input</label> -->
-													<input type="email" id="email" name="email" placeholder="Alamat email" value="" class="form-control">
-												</div>
-											</div>
-											<div class="col-lg-4">
-												<div class="form-group">
-													<!-- <label for="successInput">Success Input</label> -->
-													<div id="sandbox-container" class="span5">
-														<input type="text" id="nim" name="nim" placeholder="NIM" value="" class="form-control">
-													</div>
-												</div>
-											</div>
-											<div class="col-lg-4">
-												<div class="form-group">
-													<!-- <label for="successInput">Success Input</label> -->
-													<input type="text" id="date-of-entry" name="date_of_entry" placeholder="Tanggal masuk pertama" value="" data-language="in" class="datepicker-here form-control">
-												</div>
-											</div>
-											<div class="col-lg-4">
-												<div class="form-group">
-													<!-- <label for="successInput">Success Input</label> -->
-													<input type="text" id="date-of-birth" name="date_of_birth" placeholder="Tanggal lahir" value="" data-language="in" class="datepicker-here form-control">
+													<input type="email" id="email" name="email" placeholder="Alamat email" value="<?=!empty($edit_detail) ? $edit_detail->email : ''?>" class="form-control required">
 												</div>
 											</div>
 											<div class="col-lg-6">
 												<div class="form-group">
 													<!-- <label for="successInput">Success Input</label> -->
-													<input type="text" id="username" name="username" placeholder="Username" value="" class="form-control">
+													<input type="text" id="date-of-entry" name="date_of_entry" placeholder="Tanggal masuk pertama" value="<?=!empty($edit_detail) ? $edit_detail->date_of_entry : ''?>" data-language="in" class="datepicker-here form-control required">
 												</div>
 											</div>
-											<div class="col-lg-3">
+											<div class="col-lg-6">
 												<div class="form-group">
 													<!-- <label for="successInput">Success Input</label> -->
-													<input type="password" id="password" name="password" placeholder="Password" value="" class="form-control">
+													<input type="password" id="password" name="password" placeholder="Password" value="" class="form-control <?=!empty($edit_detail) ? '' : 'required'?>">
 												</div>
 											</div>
-											<div class="col-lg-3">
-												<div class="form-group">
-													<!-- <label for="successInput">Success Input</label> -->
-													<input type="password" id="check-password" placeholder="Ulangi password" value="" class="form-control">
-												</div>
-											</div>
+											<input type="text" name="status" value="active" hidden>
 										</div>
 									</div>
 									<div class="card-action">
-										<button type="button" class="btn btn-success" onclick="btnConfirm(this)" data-message="Anda akan menyimpan data ini!" data-type="btnCreate" data-ajax="exist" data-url="<?=base_url('admin/student/create')?>">Simpan</button>
-										<button type="button" class="btn btn-danger" onclick="btnConfirm(this)" data-message="Anda akan kembali pada halaman sebelumnya!" data-type="btnCancel" data-url="<?=$pageUrl?>">Batal</button>
+										<button type="button" class="btn btn-success" onclick="btnConfirm(this)" data-message="Anda akan menyimpan data ini!" data-type="<?=!empty($edit_detail) ? 'btnUpdate' : 'btnCreate'?>" data-url="<?=!empty($edit_detail) ? base_url('back/student/update') : base_url('back/student/create')?>" data-ajax="true" data-refress="true">Simpan</button>
+										<button type="button" class="btn btn-danger" onclick="btnCancel(this)" data-message="Anda akan kembali pada halaman sebelumnya!" data-type="btnCancel" data-url="<?=$base_path_url.'daftar-mahasiswa'?>">Kembali</button>
 									</div>
 								</div>
 							</form>

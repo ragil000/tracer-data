@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>Atlantis Lite - Bootstrap 4 Admin Dashboard</title>
+	<title>Pharmacy Tracer Data | Login</title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
 	<link rel="icon" href="../assets/img/icon.ico" type="image/x-icon"/>
 
@@ -35,20 +35,16 @@
                                     <div class="card-title text-center">Masuk</div>
                                 </div>
                                 <div class="card-body">
-                                    <form action="<?=base_url('admin/login/auth')?>" method="POST">
+                                    <form action="<?=base_url('login/auth')?>" method="POST">
                                         <div class="row">
-                                            <div class="col-12" id="alert">
-                                                <div class="alert alert-danger bg-red-soft" role="alert">
-                                                   <i class="icon-ban text-light pr-2"></i><span class="text-light"> <?=@$_SESSION['message']?></span>
-                                                </div>
-                                            </div>
+                                            <?=@$_SESSION['message']?>
                                             <div class="col-12">
                                                 <div class="form-group">
                                                     <div class="input-group mb-3">
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text" id="basic-addon1"><i class="fa fa-envelope"></i></span>
                                                         </div>
-                                                        <input type="email" name="username" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" required>
+                                                        <input type="text" name="username" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -69,6 +65,9 @@
                                                     </span>
                                                     Masuk
                                                 </button>
+                                            </div>
+                                            <div class="col-12 text-center text-primary mt-2">
+                                                <a href="<?=base_url('register')?>"><small>Belum punya akun?</small></a>
                                             </div>
                                         </div>
                                     </form>
@@ -147,9 +146,6 @@
         <script src="<?=base_url('assets/admin-assets')?>/assets/js/setting-demo.js"></script>
 
         <!-- custom javascript -->
-        <script>
-            var alertFlash = <?=json_encode(@$_SESSION['status'])?>
-        </script>
         <script src="<?=base_url('assets/admin-assets')?>/assets/js/back/auth/login.js"></script>
     </body>
 </html>
