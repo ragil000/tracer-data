@@ -45,6 +45,24 @@ class Student_Model extends CI_Model {
         return $status_opt;
     }
 
+    public function getStudentOpt($null_opt = true) {
+                  $this->db->join('users', 'users.id=profiles.user_id');
+                  $this->db->select('profiles.id as profile_id, profiles.full_name, users.nim, profiles.status');
+                  $this->db->where('users.status !=', 'nonactive');
+        $result = $this->db->get('profiles');
+        if($null_opt) {
+            $status_opt = '<option value="">-- Status --</option>';
+        }else {
+            $status_opt = null;
+        }
+        if($result->num_rows() > 0) {
+            foreach($result->result() as $row) {
+                $status_opt .= '<option value="'.$row->profile_id.'">'.strtoupper($row->nim).' - '.($row->full_name ? $row->full_name : '(belum diisi)').'</option>';
+            }
+        }
+        return $status_opt;
+    }
+
     public function getDateOfEntryOpt() {
                   $this->db->join('educations', 'profiles.id=educations.profile_id');
                   $this->db->join('users', 'users.id=profiles.user_id');
@@ -446,6 +464,42 @@ class Student_Model extends CI_Model {
             $result['status']   = false;
             $result['message']  = 'Gagal mengupdate data! Silahkan coba lagi.';
         }
+        return $result;
+    }
+
+    public function updateStatus($post) {
+        $status    = $post['status'];
+        $profile_id    = $post['profile_id'];
+
+        $result['status']   = true;
+        $result['message']  = 'Berhasil mengupdate data.';
+
+        if($status == 'Lulus') {
+            $array_data = [
+                'date_of_judicial' => $post['date_of_judicial'],
+                'date_of_graduate' => $post['date_of_graduate'],
+                'updated_by'    => getDetailAccountSession()->id,
+                'updated_at'    => time()
+            ];
+        }
+
+        for($i = 0; $i < count($profile_id); $i++) {
+            $execute    = $this->db->update('profiles', ['status' => $status], ['id' => $profile_id[$i]]);
+            if(!$execute) {
+                $result['status']   = false;
+                $result['message']  = 'Gagal mengupdate data! Silahkan coba lagi.';
+                break;
+            }
+            if($status == 'Lulus') {
+                $execute    = $this->db->update('educations', $array_data, ['profile_id' => $profile_id[$i]]);
+                if(!$execute) {
+                    $result['status']   = false;
+                    $result['message']  = 'Gagal mengupdate data! Silahkan coba lagi.';
+                    break;
+                }
+            }
+        }
+
         return $result;
     }
 

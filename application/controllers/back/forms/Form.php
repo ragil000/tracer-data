@@ -3,33 +3,38 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Form extends CI_Controller {
 
-    private $path, $pageUrl;
+    private $path, $page_url;
     public function __construct() {
         parent::__construct();
-        if(empty($this->session->userdata('id'))) {
-            redirect('admin/login');
+        if(empty(getDetailAccountSession())) {
+            redirect('login');
         }
         $this->path     = 'back/pages/forms/';
-        $this->pageUrl  = 'admin/form/';
+        $this->page_url  = 'admin/form/';
         $this->load->model('back/forms/Form_Model');
     }
 
-    public function index($content = 'form-dashboard') {
-        if($content != 'form-dashboard') {
-            $getContent             = $this->content($content);
-            $content                = $getContent['page'];
-
-            $data['theme_style']    = $getContent['theme_style'];
-            $data['theme_script']   = $getContent['theme_script'];
-            $data['script']         = $getContent['script'];
-            $data['pageUrl']        = $getContent['pageUrl'];
-        }else if($content == 'form-dashboard') {
-            $content              = 'dashboard/form-dashboard';
-            $data['theme_style']  = $this->path.'dashboard/css/dashboard/theme_style';
-            $data['theme_script'] = $this->path.'dashboard/js/dashboard/theme_script';
-            $data['script']       = $this->path.'dashboard/js/dashboard/script';
-            $data['pageUrl']      = $this->pageUrl;
+    public function index($content = 'history') {
+        $display    = $this->input->get('display');
+        if($display) {
+            setOldPage($this->page_url.$content.'?display='.$display);
+        }else {
+            setOldPage($this->page_url.$content);
         }
+        $data['data_account']   = getDetailAccountSession();
+
+        $get_content             = $this->content($content, $display);
+        $content                = $get_content['page'];
+        if(!empty($get_content['datas'])) {
+            foreach($get_content['datas'] as $key => $value) {
+                $data[$key] = $value;
+            }
+        }
+        $data['theme_style']    = $get_content['theme_style'];
+        $data['theme_script']   = $get_content['theme_script'];
+        $data['script']         = $get_content['script'];
+        $data['page_url']       = $get_content['page_url'];
+        $data['base_path_url']  = $this->page_url;
 
         $this->load->view('back/templates/header', $data);
         $this->load->view($this->path.$content); // ini adalah content yg bisa diganti
@@ -38,20 +43,13 @@ class Form extends CI_Controller {
 
     // function fleksibel untuk mengubah content
     private function content($content) {
-        if($content == 'create-mahasiswa') {
-            $getContent['page']         = 'master/form';
-            $getContent['theme_style']  = $this->path.'master/css/form/theme_style';
-            $getContent['theme_script'] = $this->path.'master/js/form/theme_script';
-            $getContent['script']       = $this->path.'master/js/form/script';
-            $getContent['pageUrl']      = $this->pageUrl.'master/list';
-            return $getContent;
-        }else if($content == 'read-mahasiswa') {
-            $getContent['page']         = 'master/list-card';
-            $getContent['theme_style']  = $this->path.'master/css/list/theme_style';
-            $getContent['theme_script'] = $this->path.'master/js/list/theme_script';
-            $getContent['script']       = $this->path.'master/js/list/script';
-            $getContent['pageUrl']      = $this->pageUrl.'master/list';
-            return $getContent;
+        if($content == 'history') {
+            $get_content['page']         = 'history';
+            $get_content['theme_style']  = $this->path.'css/history/theme_style';
+            $get_content['theme_script'] = $this->path.'js/history/theme_script';
+            $get_content['script']       = $this->path.'js/history/script';
+            $get_content['page_url']     = $this->page_url.'history';
+            return $get_content;
         }
     }
 

@@ -30,6 +30,8 @@ class Login extends CI_Controller {
             $this->session->set_userdata(['penyihir' => encodeRMY(json_encode($session_data), 'rmy')]);
             if($result['data']->role == STUDENT) {
                 redirect('dashboard/');
+            }else if($result['data']->role == SUPER_ADMIN) {
+                redirect('dashboard/');
             }
         }else {
             $this->session->set_userdata(['message' => alertRMY($result['message'], $result['status'])]);

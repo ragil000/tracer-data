@@ -148,11 +148,12 @@ function btnUpdate(element, form = null) {
             else data = $('form').serialize()
             swalLoading()
             $.when($.post(url, data)).done(function(result){
+                console.log('resulkt', result)
                 $.when(swalLoading(false)).done(function(e){
                     result = JSON.parse(result)
                     if(refressPage) {
                         swalAlert(result.status, result.message).then(function(e) {
-                            window.location.reload(5)
+                            // window.location.reload(5)
                         })
                     }else {
                         swalAlert(result.status, result.message)
@@ -292,6 +293,39 @@ function MB(size) {
     return sizeMB
 }
 // end
+
+function toogle(element, selector, trigger, required = false) {
+    let value = $(element).val()
+    if(required) {
+        if(value == trigger) {
+            if($(selector).is('[hidden]')) {
+                $(selector).removeAttr('hidden')
+                $(selector).addClass('required')
+            }
+        }else {
+            if(!$(selector).is('[hidden]')) {
+                $(selector).attr('hidden', '')
+                if($(selector).next('small').length > 0) {
+                    $(selector).next('small').remove()
+                }
+                if($(selector).hasClass('is-invalid')) {
+                    $(selector).removeClass('is-invalid')
+                }
+                $(selector).removeClass('required')
+            }
+        }
+    }else {
+        if(value == trigger) {
+            if($(selector).is('[hidden]')) {
+                $(selector).removeAttr('hidden')
+            }
+        }else {
+            if(!$(selector).is('[hidden]')) {
+                $(selector).attr('hidden', '')
+            }
+        }
+    }
+}
 
 // get Indonesian date
 function getDateIND(date){

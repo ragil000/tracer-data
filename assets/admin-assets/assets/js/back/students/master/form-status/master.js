@@ -23,5 +23,19 @@ $('#datepicker').datepicker({
 })
 
 $(document).ready(function() {
-    $('.js-example-basic-multiple').select2();
-});
+    $('.js-example-basic-multiple').select2()
+})
+
+function getDatepicker(element) {
+    let regex = /^\d{4}-\d{2}-\d{2}$|^\d{4}-\d{1}-\d{1}$/g
+    var myDataPicker = $(element).datepicker({ 
+        language : 'in', 
+        dateFormat: 'yyyy-mm-dd', 
+        // autoClose : true
+    }).data('datepicker')
+    if($(element).val() && regex.test($(element).val())) {
+        myDataPicker.selectDate(new Date($(element).val()))
+    }else {
+        myDataPicker.selectDate()
+    }
+}

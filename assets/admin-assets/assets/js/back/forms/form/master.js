@@ -21,7 +21,7 @@ var PageInit = function() {
         // remove active child
         $('.child-nav-item').removeClass('active')
         // set active child
-        $('#child-kuesioner-1').addClass('active')
+        $('#child-kuesioner-2').addClass('active')
         // remove show
         $('.nav-item > collapse').removeClass('show')
         // set show

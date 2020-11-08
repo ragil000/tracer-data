@@ -73,14 +73,15 @@ $route['back/student/updateParent'] = 'back/students/Student/updateParent';
 $route['back/student/updateStudy'] = 'back/students/Student/updateStudy';
 $route['back/student/updateArchievement'] = 'back/students/Student/updateArchievement';
 $route['back/student/updateJob'] = 'back/students/Student/updateJob';
+$route['back/student/updateStatus'] = 'back/students/Student/updateStatus';
 $route['back/student/delete'] = 'back/students/Student/delete';
 $route['back/student/(:any)'] = 'back/students/Student/index/$1';
 
-$route['admin/form'] = 'back/forms/Form/index';
-$route['admin/form/(:any)'] = 'back/forms/Form/index/$1';
+$route['back/form'] = 'back/forms/Form/index';
+$route['back/form/(:any)'] = 'back/forms/Form/index/$1';
 
-$route['admin/email'] = 'back/emails/Email/index';
-$route['admin/email/send'] = 'back/emails/Email/send';
-$route['admin/email/(:any)'] = 'back/emails/Email/index/$1';
+$route['back/email'] = 'back/emails/Email/index';
+$route['back/email/send'] = 'back/emails/Email/send';
+$route['back/email/(:any)'] = 'back/emails/Email/index/$1';
 
 $route['middle/form'] = 'middle/forms/Form/index';

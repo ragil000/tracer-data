@@ -378,7 +378,12 @@
 							<div class="collapse" id="kuesioner">
 								<ul class="nav nav-collapse">
 									<li id="child-kuesioner-1" class="child-nav-item">
-										<a href="<?=base_url('admin/form/')?>">
+										<a href="<?=base_url('back/form/form-studio')?>">
+											<span class="sub-item">Kuesioner Studio</span>
+										</a>
+									</li>
+									<li id="child-kuesioner-2" class="child-nav-item">
+										<a href="<?=base_url('back/form/')?>">
 											<span class="sub-item">Riwayat Kuesioner</span>
 										</a>
 									</li>
