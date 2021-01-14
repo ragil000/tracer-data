@@ -15,15 +15,9 @@ class Student extends CI_Controller {
     }
 
     public function index($content = 'daftar-mahasiswa') {
-        $display    = $this->input->get('display');
-        if($display) {
-            setOldPage($this->page_url.$content.'?display='.$display);
-        }else {
-            setOldPage($this->page_url.$content);
-        }
         $data['data_account']   = getDetailAccountSession();
 
-        $get_content             = $this->content($content, $display);
+        $get_content             = $this->content($content);
         $content                = $get_content['page'];
         if(!empty($get_content['datas'])) {
             foreach($get_content['datas'] as $key => $value) {
@@ -44,6 +38,12 @@ class Student extends CI_Controller {
     // function fleksibel untuk mengubah content
     private function content($content, $display = null) {
         if($content == 'tambah-mahasiswa') {
+            $display    = $_SERVER['QUERY_STRING'];
+            if($display) {
+                setOldPage($this->page_url.$content.'?'.$display);
+            }else {
+                setOldPage($this->page_url.$content);
+            }
             if(!empty($this->input->get('user_id'))) {
                 $get_content['datas']        = [
                     'major_opt' => $this->Student_Model->getMajorOpt(),
@@ -61,6 +61,12 @@ class Student extends CI_Controller {
             $get_content['page_url']     = $this->page_url.'tambah-mahasiswa';
             return $get_content;
         }else if($content == 'daftar-mahasiswa') {
+            $display    = $_SERVER['QUERY_STRING'];
+            if($display) {
+                setOldPage($this->page_url.$content.'?'.$display);
+            }else {
+                setOldPage($this->page_url.$content);
+            }
             if($display == 'table') {
                 $get_content['page']         = 'master/list';
             }else {
@@ -78,6 +84,12 @@ class Student extends CI_Controller {
             $get_content['page_url']     = $this->page_url.'daftar-mahasiswa';
             return $get_content;
         }else if($content == 'profil-mahasiswa') {
+            $display    = $_SERVER['QUERY_STRING'];
+            if($display) {
+                setOldPage($this->page_url.$content.'?'.$display);
+            }else {
+                setOldPage($this->page_url.$content);
+            }
             $data                       = $this->Student_Model->readDetail();
             $get_content['datas']        = [
                 'profile' => $data['data']['profile'],
@@ -95,6 +107,12 @@ class Student extends CI_Controller {
             $get_content['page_url']     = $this->page_url.'read-mahasiswa';
             return $get_content;
         }else if($content == 'ubah-status-mahasiswa') {
+            $display    = $_SERVER['QUERY_STRING'];
+            if($display) {
+                setOldPage($this->page_url.$content.'?'.$display);
+            }else {
+                setOldPage($this->page_url.$content);
+            }
             $get_content['datas']        = [
                 'student_opt' => $this->Student_Model->getStudentOpt(false)
             ];
@@ -104,6 +122,8 @@ class Student extends CI_Controller {
             $get_content['script']       = $this->path.'master/js/form-status/script';
             $get_content['page_url']     = $this->page_url.'tambah-mahasiswa';
             return $get_content;
+        }else {
+            redirect('ErrorPage/page404');
         }
     }
 

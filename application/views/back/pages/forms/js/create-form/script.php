@@ -1,0 +1,1 @@
+<script src="<?=base_url('assets/admin-assets/')?>assets/js/back/forms/create-form/master.js"></script>

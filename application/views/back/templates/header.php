@@ -28,6 +28,9 @@
     <!-- custom css -->
     <link rel="stylesheet" href="<?=base_url('assets/admin-assets/')?>assets/css/style.css">
 
+	<!-- jQuery -->
+	<script src="<?=base_url('assets/admin-assets/')?>assets/js/core/jquery.3.2.1.min.js"></script>
+
 </head>
 <body>
 	<div class="wrapper">
@@ -331,12 +334,12 @@
 							</span>
 							<h4 class="text-section">Master</h4>
 						</li>
-						<li class="nav-item" id="mahasiswax">
+						<!-- <li class="nav-item" id="mahasiswax">
 							<a href="<?=base_url('back/student/daftar-mahasiswa')?>">
 								<i class="flaticon-add-user"></i>
 								<p>Mahasiswa</p>
 							</a>
-						</li>
+						</li> -->
 						<li id="parent-mahasiswa" class="nav-item">
 							<a data-toggle="collapse" href="#mahasiswa">
 								<i class="flaticon-add-user"></i>
@@ -355,11 +358,11 @@
 											<span class="sub-item">Ubah Status</span>
 										</a>
 									</li>
-									<li class="child-nav-item">
+									<!-- <li class="child-nav-item">
 										<a href="#" onclick="btnAlpha(this)">
 											<span class="sub-item">Data Mata Kuliah</span>
 										</a>
-									</li>
+									</li> -->
 								</ul>
 							</div>
 						</li>
@@ -387,15 +390,15 @@
 											<span class="sub-item">Riwayat Kuesioner</span>
 										</a>
 									</li>
-									<li class="child-nav-item">
+									<!-- <li class="child-nav-item">
 										<a href="#" onclick="btnAlpha(this)">
 											<span class="sub-item">Pharmacy Form</span>
 										</a>
-									</li>
+									</li> -->
 								</ul>
 							</div>
 						</li>
-						<li id="parent-email" class="nav-item">
+						<!-- <li id="parent-email" class="nav-item">
 							<a data-toggle="collapse" href="#email">
 								<i class="flaticon-envelope-3"></i>
 								<p>Email</p>
@@ -421,7 +424,7 @@
 								<i class="flaticon-circle"></i>
 								<p>Menu Lainnya</p>
 							</a>
-						</li>
+						</li> -->
 					</ul>
 				</div>
 			</div>

@@ -387,6 +387,13 @@ function getYear(date){
     return year.getFullYear();
 }
 
+// get time
+function getTime(date){
+    let newDate = new Date(date);
+    
+    return newDate.getHours()+':'+newDate.getMinutes()+':'+newDate.getSeconds()+' WITA';
+}
+
 // limit text
 function limitText(string, limit = 100) {
 

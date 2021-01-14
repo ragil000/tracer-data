@@ -42,8 +42,6 @@ class Form_Model extends CI_Model {
         $this->db->limit($limit, $start);
         $this->db->order_by('date_of_entry ASC, id DESC');
         $get = $this->db->get('students');
-        // print_r($get->result_array());
-        // die;
         if($get->num_rows() > 0){
             $result['status']   = true;
             $result['data']     = $get->result_array();
@@ -52,6 +50,29 @@ class Form_Model extends CI_Model {
             $result['data']     = null;
         }
         return $result;
+    }
+
+    public function getMasterForm() {
+        $result =   $this->db->get_where('forms', ['type' => 'master'])->row();
+        return $result;
+    }
+
+    public function getHistoryForm() {
+                    $this->db->where('type !=', 'master');
+                    $this->db->order_by('created_at', 'DESC');
+        $result =   $this->db->get('forms');
+        return [
+            'total' => $result->num_rows(),
+            'data' => $result->result()
+        ];
+    }
+
+    public function getLinkForm() {
+        if(isset($_GET['type'])) {
+            if($_GET['type'] == 'master') {
+                
+            }
+        }
     }
 
 }

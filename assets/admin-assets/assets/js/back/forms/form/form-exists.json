@@ -1,0 +1,180 @@
+{
+    "title": "Kuesioner Tracer Data Alumni Periode Januari-Juni 2020",
+    "description": "Data ini hanya bisa diisi oleh alumni yang terdaftar dalam database kami. Jika anda belum memiliki akun yang terdaftar dalam sistem kami, mohon hubungi admin Sistem Tracer Data Fakultas Farmasi di +62 823 1146 3010",
+    "tag": "Mohon diisi dengan data yang sebenar-benarnya, anda bertanggungjawab penuh terhadap informasi yang akan anda berikan pada kuesioner berikut.",
+    "form": [
+        {
+            "question": "Apa kegiatan anda saat ini?",
+            "required": "true",
+            "type": "radio",
+            "id": "name-1",
+            "answers": ["Bekerja", "Membuka usaha", "Belum bekerja"]
+        },
+        {
+            "question": "Bagian untuk yang sudah bekerja",
+            "required": "true",
+            "type": "section"
+        },
+        {
+            "question": "Nama perusahaan tempat anda bekerja?",
+            "required": "true",
+            "type": "input",
+            "id": "name-2"
+        },
+        {
+            "question": "Alamat perusahaan tempat anda bekerja?",
+            "required": "true",
+            "type": "input",
+            "id": "name-3"
+        },
+        {
+            "question": "Alamat web perusahaan tempat anda bekerja?",
+            "required": "true",
+            "type": "input",
+            "id": "name-4"
+        },
+        {
+            "question": "Sektor perusahaan/industri tempat anda bekerja?",
+            "required": "true",
+            "type": "input",
+            "id": "name-5"
+        },
+        {
+            "question": "Tanggal mulai anda bekerja?",
+            "required": "true",
+            "type": "date",
+            "id": "name-6"
+        },
+        {
+            "question": "Posisi anda saat pertama kali bekerja?",
+            "required": "true",
+            "type": "input",
+            "id": "name-7"
+        },
+        {
+            "question": "Berapa gaji pertama anda?",
+            "required": "true",
+            "type": "input",
+            "id": "name-8"
+        },
+        {
+            "question": "Darimana anda mendapatkan informasi lowongan pekerjaan?",
+            "required": "true",
+            "type": "radio",
+            "id": "name-9",
+            "answers": [
+                "Media massa (koran, televisi atau radio)",
+                "Pengumuman di kampus",
+                "Teman sesama alumni",
+                "Kerabat/keluarga",
+                "Lainnya"
+            ]
+        },
+        {
+            "question": "Menurut anda dalam skala 1-5 (1=sangat tidak relevan dan 5=sangat relevan), bagaimana relevansi pekerjaan anda dengan bidang ilmu yang anda tempuh saat kuliah?",
+            "required": "true",
+            "type": "range",
+            "id": "name-10",
+            "length": "5",
+            "minimum": "Sangat tidak relevan",
+            "maximum": "Sangat relevan"
+        },
+        {
+            "question": "Menurut anda, mata kuliah apa yang anda dapatkan dari bangku kuliah yang paling relevan dengan pekerjaan anda saat ini?",
+            "required": "true",
+            "type": "input",
+            "id": "name-11"
+        },
+        {
+            "question": "Bagian untuk yang membuka usaha",
+            "required": "true",
+            "type": "section"
+        },
+        {
+            "question": "Nama perusahaan/usaha yang anda bangun?",
+            "required": "true",
+            "type": "input",
+            "id": "name-12"
+        },
+        {
+            "question": "Alamat perusahaan/usaha yang anda bangun?",
+            "required": "true",
+            "type": "input",
+            "id": "name-13"
+        },
+        {
+            "question": "Alamat web perusahaan/usaha yang anda bangun?",
+            "required": "true",
+            "type": "input",
+            "id": "name-14"
+        },
+        {
+            "question": "Bidang usaha yang anda bangun?",
+            "required": "true",
+            "type": "input",
+            "id": "name-15"
+        },
+        {
+            "question": "Jumlah karyawan perusahaan/usaha yang anda bangun, termasuk pemilik perusahaan/usaha?",
+            "required": "true",
+            "type": "input",
+            "id": "name-16"
+        },
+        {
+            "question": "Berapa omzet anda per bulan dari usaha yang anda bangun?",
+            "required": "true",
+            "type": "input",
+            "id": "name-17"
+        },
+        {
+            "question": "Berapa besar rata-rata pengeluaran anda per bulan?",
+            "required": "true",
+            "type": "input",
+            "id": "name-18"
+        },
+        {
+            "question": "Menurut anda dalam skala 1-5 (1=sangat tidak relevan dan 5=sangat relevan), bagaimana relevansi pekerjaan anda dengan bidang ilmu yang anda tempuh saat kuliah?",
+            "required": "true",
+            "type": "range",
+            "id": "name-19",
+            "length": "5",
+            "minimum": "Sangat tidak relevan",
+            "maximum": "Sangat relevan"
+        },
+        {
+            "question": "Bagian untuk yang belum bekerja",
+            "required": "true",
+            "type": "section"
+        },
+        {
+            "question": "Kegiatan apa yang sedang anda lakukan saat ini?",
+            "required": "true",
+            "type": "radio",
+            "id": "name-20",
+            "answers": [
+                "Mencari pekerjaan yang sesuai",
+                "Melanjutkan/sedang mempersiapkan pendidikan tingkat lanjut",
+                "Mengikuti suami (menjadi Ibu rumah tangga)",
+                "Membantu orang tua",
+                "Lainnya"
+            ]
+        },
+        {
+            "question": "Akhir bagian",
+            "required": "true",
+            "type": "section"
+        },
+        {
+            "question": "Menurut anda, apa yang harus dilakukan pihak fakultas agar anda bisa cepat mendapatkan pekerjaan yang sesuai?",
+            "required": "true",
+            "type": "input",
+            "id": "name-21"
+        },
+        {
+            "question": "Adakah saran anda yang lain untuk perbaikan fakultas?",
+            "required": "true",
+            "type": "input",
+            "id": "name-22"
+        }
+    ]    
+}

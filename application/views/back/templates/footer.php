@@ -28,7 +28,6 @@
     
     </div>
 	<!--   Core JS Files   -->
-	<script src="<?=base_url('assets/admin-assets/')?>assets/js/core/jquery.3.2.1.min.js"></script>
 	<script src="<?=base_url('assets/admin-assets/')?>assets/js/core/popper.min.js"></script>
 	<script src="<?=base_url('assets/admin-assets/')?>assets/js/core/bootstrap.min.js"></script>
 
