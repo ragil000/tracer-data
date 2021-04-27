@@ -22,8 +22,8 @@ function form_input(number, question, id) {
 function form_radio(number, question, id, answers) {
     let html =  '<div class="col-12 mb-0 pb-0">'+
                     '<div class="card bg-active mb-2">'+
-                        '<div class="card-body pl-3 pr-2 pb-0 pt-3">'+    
-                            '<p><span class="badge badge-danger mr-2">'+number+'</span> '+question+'</p>'+
+                        '<div class="card-body pl-3 pr-2 pb-3 pt-3">'+    
+                            '<div class="row p-0 m-0"><div class="col-1 p-0 m-0"><span class="badge badge-danger mr-2">'+number+'</span></div> <div class="col-11 p-0 m-0"><input type="text" id="1" name="1" class="form-control questions" placeholder="Tuliskan disini" value="'+question+'"></div></div>'+
                         '</div>'+
                     '</div>'+
                 '</div>'
@@ -51,8 +51,8 @@ function form_radio(number, question, id, answers) {
 function form_range(number, question, id, length, minimum, maximum) {
     let html =  '<div class="col-12 mb-0 pb-0">'+
                     '<div class="card bg-active mb-2">'+
-                        '<div class="card-body pl-3 pr-2 pb-0 pt-3">'+    
-                            '<p><span class="badge badge-danger mr-2">'+number+'</span> '+question+'</p>'+
+                        '<div class="card-body pl-3 pr-2 pb-3 pt-3">'+    
+                            '<div class="row p-0 m-0"><div class="col-1 p-0 m-0"><span class="badge badge-danger mr-2">'+number+'</span></div> <div class="col-11 p-0 m-0"><input type="text" id="1" name="1" class="form-control questions" placeholder="Tuliskan disini" value="'+question+'"></div></div>'+
                         '</div>'+
                     '</div>'+
                 '</div>'
@@ -95,8 +95,8 @@ function form_range(number, question, id, length, minimum, maximum) {
 function form_date(number, question, id) {
     let html =  '<div class="col-12 mb-0 pb-0">'+
                     '<div class="card bg-active mb-2">'+
-                        '<div class="card-body pl-3 pr-2 pb-0 pt-3">'+    
-                            '<p><span class="badge badge-danger mr-2">'+number+'</span> '+question+'</p>'+
+                        '<div class="card-body pl-3 pr-2 pb-3 pt-3">'+    
+                            '<div class="row p-0 m-0"><div class="col-1 p-0 m-0"><span class="badge badge-danger mr-2">'+number+'</span></div> <div class="col-11 p-0 m-0"><input type="text" id="1" name="1" class="form-control questions" placeholder="Tuliskan disini" value="'+question+'"></div></div>'+
                         '</div>'+
                     '</div>'+
                 '</div>'+

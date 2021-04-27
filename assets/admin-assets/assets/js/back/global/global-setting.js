@@ -406,7 +406,8 @@ function limitText(string, limit = 100) {
         let endPoint = stringCut.indexOf(' ')
 
         //if the string doesn't contain any space then it will cut without word basis.
-        string = endPoint? string.substring(0, limit) : string.substring(0)
+        string = endPoint ? string.substring(0, limit) : string.substring(0)
+        string = string+'...'
     }
     return string
 }

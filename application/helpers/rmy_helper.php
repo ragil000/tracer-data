@@ -27,7 +27,7 @@ if(!function_exists('decodeRMY')) {
 }
 
 if(!function_exists('getDetailAccountSession')) {
-    function getDetailAccountSession() {
+    function getDetailAccountSession($str = NULL) {
         $_this  = get_instance();
         $session = $_this->session->userdata('penyihir');
         if($session) {
@@ -36,15 +36,24 @@ if(!function_exists('getDetailAccountSession')) {
                                   $_this->db->join('profiles', 'profiles.user_id=users.id', 'left');
                                   $_this->db->select('users.id, users.nim, users.username, users.email, users.role, profiles.photo_profile, profiles.full_name');
                 $account_data   = $_this->db->get_where('users', ['users.id' => $account_session->id])->row();
-                return (object)[
-                    'id' => $account_data->id,           
-                    'nim' => $account_data->nim,           
-                    'full_name' => $account_data->full_name,        
-                    'username' => $account_data->username,        
-                    'email' => $account_data->email,
-                    'photo_profile' => $account_data->photo_profile,
-                    'role' => $account_data->role
-                ];
+                if($str) {
+                    $data_exists = ['id', 'nim', 'full_name', 'username', 'email', 'email', 'photo_profile', 'role'];
+                    if(in_array($str, $data_exists)) {
+                        return $account_data->$str;
+                    }else {
+                        return false;
+                    }
+                }else {
+                    return (object)[
+                        'id' => $account_data->id,           
+                        'nim' => $account_data->nim,           
+                        'full_name' => $account_data->full_name,        
+                        'username' => $account_data->username,        
+                        'email' => $account_data->email,
+                        'photo_profile' => $account_data->photo_profile,
+                        'role' => $account_data->role
+                    ];
+                }
             }else {
                 return false;
             }

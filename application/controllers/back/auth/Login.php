@@ -25,7 +25,9 @@ class Login extends CI_Controller {
         $result = $this->Login_Model->auth($this->input->post('username'), $this->input->post('password'));
         if($result['status']) {
             $session_data = [
-                'id' => $result['data']->id
+                'id' => $result['data']->id,
+                'username' => $result['data']->username,
+                'email' => $result['data']->email
             ];
             $this->session->set_userdata(['penyihir' => encodeRMY(json_encode($session_data), 'rmy')]);
             if($result['data']->role == STUDENT) {

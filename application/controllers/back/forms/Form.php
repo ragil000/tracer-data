@@ -17,7 +17,7 @@ class Form extends CI_Controller {
     public function index($content = 'history') {
         $data['data_account']   = getDetailAccountSession();
 
-        $get_content             = $this->content($content);
+        $get_content            = $this->content($content);
         $content                = $get_content['page'];
         if(!empty($get_content['datas'])) {
             foreach($get_content['datas'] as $key => $value) {
@@ -58,7 +58,7 @@ class Form extends CI_Controller {
                 setOldPage($this->page_url.$content);
             }
             $get_content['page']         = 'form-studio';
-            $get_content['datas']         = [
+            $get_content['datas']        = [
                 'master_form' => $this->Form_Model->getMasterForm(),
                 'history_form' => $this->Form_Model->getHistoryForm()
             ];
@@ -67,14 +67,14 @@ class Form extends CI_Controller {
             $get_content['script']       = $this->path.'js/form-studio/script';
             $get_content['page_url']     = $this->page_url.'form-studio';
             return $get_content;
-        }else if($content == 'create-form') {
+        }else if($content == 'send-form') {
             $display    = $_SERVER['QUERY_STRING'];
             if($display) {
                 setOldPage($this->page_url.$content.'?'.$display);
             }else {
                 setOldPage($this->page_url.$content);
             }
-            $get_content['page']         = 'create-form';
+            $get_content['page']         = 'send-form';
             $get_content['datas']         = [
                 'link_form' => $this->Form_Model->getLinkForm()
             ];
@@ -90,8 +90,12 @@ class Form extends CI_Controller {
 
     public function create() {
         $post = $this->input->post();
-        $result = $this->Student_Model->create($post);
-        echo json_encode($result);
+        $results = $this->Form_Model->create($post);
+        if(!$results['status']) {
+            $this->session->set_userdata(['message' => alertRMY($results['message'], $results['status'])]);
+            $this->session->keep_flashdata('message');
+        }
+        echo json_encode($results);
     }
 
     public function read($page = 1) {

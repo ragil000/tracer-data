@@ -78,6 +78,7 @@ $route['back/student/delete'] = 'back/students/Student/delete';
 $route['back/student/(:any)'] = 'back/students/Student/index/$1';
 
 $route['back/form'] = 'back/forms/Form/index';
+$route['back/form/create'] = 'back/forms/Form/create';
 $route['back/form/(:any)'] = 'back/forms/Form/index/$1';
 
 $route['back/email'] = 'back/emails/Email/index';

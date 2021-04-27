@@ -48,9 +48,11 @@
                                     <ol class="activity-feed soft-scrollbar" style="overflow-y: overlay; overflow-x: hidden; max-height: 80%;">
                                         <li class="feed-item feed-item-secondary">
                                             <time class="date" datetime="7-12"><span class="text-small">Master Kuesioner</span> </time>
-                                            <div class="list-card list-1 card m-0 p-2 shadow bg-active" id="list-1">
-                                                <span class="text">Master Kuesioner Tracer Alumni<a href="#" class="text-light disable-link" onclick="setForm('master', 1)"> "Tracer Alumni Fakultas Farmasi"</a></span>
-                                            </div>
+                                            <a href="#" class="disable-link" onclick="setForm('master', 1)">
+                                                <div class="list-card list-1 card m-0 p-2 shadow bg-active" id="list-1">
+                                                    <span class="text">Master Kuesioner Tracer Alumni <span class="text-warning">"Tracer Alumni Fakultas Farmasi"</span></span>
+                                                </div>
+                                            </a>
                                         </li>
                                         
                                         <li class="feed-item feed-item-default list-history"></li>
@@ -67,9 +69,11 @@
                                     <ol class="activity-feed soft-scrollbar" style="overflow-y: overlay; overflow-x: hidden; max-height: 90%;">
                                         <li class="feed-item feed-item-secondary">
                                             <time class="date" datetime="7-12"><span class="text-small">Master Kuesioner</span> </time>
-                                            <div class="list-card list-1 card m-0 p-2 shadow bg-active" id="1">
-                                                <span class="text">Master Kuesioner Tracer Alumni<a href="#" class="text-light disable-link" onclick="setForm('master', 1)"> "Tracer Alumni Fakultas Farmasi"</a></span>
-                                            </div>
+                                            <a href="#" class="disable-link" onclick="setForm('master', 1)">
+                                                <div class="list-card list-1 card m-0 p-2 shadow bg-active" id="list-1">
+                                                    <span class="text">Master Kuesioner Tracer Alumni <span class="text-warning">"Tracer Alumni Fakultas Farmasi"</span></span>
+                                                </div>
+                                            </a>
                                         </li>
                                         
                                         <li class="feed-item feed-item-default list-history"></li>
@@ -84,6 +88,7 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
+                                        <?=@$_SESSION['message']?>
                                         <div class="col-lg-12">
                                             <div class="tab-content" id="v-pills-with-icon-tabContent">
                                                 <div class="tab-pane fade active show" id="v-pills-questionnaire-icons" role="tabpanel" aria-labelledby="v-pills-questionnaire-tab-icons">

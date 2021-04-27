@@ -5,37 +5,23 @@ class Form_Model extends CI_Model {
 
     public function create($post) {
         $arrayData  = [
-            'full_name'     => $post['full_name'],
-            'email'         => $post['email'],
-            'nim'           => $post['nim'],
-            'date_of_entry' => $post['date_of_entry'],
-            'date_of_birth' => $post['date_of_birth'],
-            'created_by'    => '1'
+            'type'          => $post['type'],
+            'title'         => $post['title'],
+            'description'   => $post['description'],
+            'form'          => $post['form'],
+            'created_by'    => getDetailAccountSession('id')
         ];
-        $execute    = $this->db->insert('students', $arrayData);
-        $studentId  = $this->db->insert_id();
+        $execute    = $this->db->insert('forms', $arrayData);
+        $form_id  = $this->db->insert_id();
         if($execute) {
-            $arrayData  = [
-                'student_id'    => $studentId,
-                'username'      => $post['username'],
-                'password'      => md5($post['password']),
-                'status'        => 'verify',
-                'created_by'    => '1'
-            ];
-            $execute    = $this->db->insert('users', $arrayData);
-            if($execute) {
-                $result['status']   = true;
-                $result['message']  = 'Berhasil menginputkan data.';
-            }else {
-                $this->db->delete('students', ['id' => $studentId]);
-                $result['status']   = false;
-                $result['message']  = 'Gagal menginputkan data! Silahkan coba lagi.';
-            }
+            $results['status']   = true;
+            $results['message']  = 'Berhasil menginputkan data.';
+            $results['id']       = encodeRMY($form_id, 'rmy');
         }else {
-            $result['status']   = false;
-            $result['message']  = 'Gagal menginputkan data! Silahkan coba lagi.';
+            $results['status']   = false;
+            $results['message']  = 'Gagal menginputkan data! Silahkan coba lagi.';
         }
-        return $result;
+        return $results;
     }
 
     public function read($limit = 10, $start = 0) {
@@ -58,12 +44,13 @@ class Form_Model extends CI_Model {
     }
 
     public function getHistoryForm() {
-                    $this->db->where('type !=', 'master');
+                    $this->db->where('type =', 'form');
                     $this->db->order_by('created_at', 'DESC');
-        $result =   $this->db->get('forms');
+        $results =   $this->db->get('forms');
+
         return [
-            'total' => $result->num_rows(),
-            'data' => $result->result()
+            'total' => $results->num_rows(),
+            'data' => $results->result()
         ];
     }
 
